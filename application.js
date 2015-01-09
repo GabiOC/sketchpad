@@ -4,25 +4,11 @@
 
 // generate number of grids
 
-// 
-
-
+// change color with mouseover
 
 $(document).ready(function() {
-	
-	//run this function on hover
-	var draw_on_grid = function(color) {
-	$('grid').on('hover', function()
-	
-	)};
-
-	$(this).css()
-
-	//event delegation
-
-var get_random_color = function() {
-  var r = function() { return Math.floor(Math.random()*256) };
-  return "rgb(" + r() + "," + r() + "," + r() + ")";
+	$("insert class").on("mouseenter", "insert id", function() {
+		$(this).css({"background-color": "insert color"});
+	})
 }
 
-})
