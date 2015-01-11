@@ -1,6 +1,7 @@
 * {
+	background-color: ;
 	font-family: 'Lato', sans-serif;
-	color: #404040;
+	color: black;
 	text-align: center;
 	text-decoration: none;
 	margin: 8px;
@@ -11,10 +12,17 @@ button {
 	width: 106px;
   	font-size: 14px;
   	background-color: #f2f2f2;
-  	border: 1px solid #dcdcdc;
-  	border-radius: 2px;
-  	margin: 5px 3px;
+  	border: 1px solid #e4e4e4;
+  	border-radius: 3px;
+  	margin: 6px 3px;
   	font-weight: bold;
+  	outline-width: medium;
+}
+
+li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 
 #create {
@@ -26,8 +34,9 @@ footer{
 	position: absolute;
 	bottom: 0;
 	height: 40px;
+	color: #404040;
 	background-color: #f2f2f2;
 	border-top: 1px solid #e4e4e4;
-	line-height: 20px;
+	line-height: 25px;
 	min-width: 100%;
 }

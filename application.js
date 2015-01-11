@@ -1,14 +1,14 @@
-// select grid size
+$(document).ready(function(){
+	
+// Triggers prompt to input grid size
+	$("#size").click(function(){
+		prompt("Enter a number between 0 and 100");
+	});
 
-// select grid color(s)
-
-// generate number of grids
-
-// change color with mouseover
-
-$(document).ready(function() {
-	$("insert class").on("mouseenter", "insert id", function() {
-		$(this).css({"background-color": "insert color"});
-	})
-}
+// Triggers color options dropdown 
+	$(".color-options").hide();
+	$("#color").click(function(){
+		$(".color-options").slideToggle("slow");
+	});
+});
 

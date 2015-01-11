@@ -3,22 +3,30 @@
 <head>
 	<title>Sketchpad</title>
 	<meta charset=utf-8>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 	<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+	<script src="application.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
 </head>
 
 	<header>
-		<h1>Sketchpad</h1>
-		<h2>Hover over the squares to make your own sketch</h2>
+		<h1>Sketchpad.</h1>
+		<h3>Hover over the squares to create your own sketch</h2>
 	</header>
-	<body>
-		<div class="selectors">
-			<button id="size">Size</button>
-			<button id="color">Colors</button>
-			<button id="create">Create Sketchpad</button>
-		</div>
-	</body>
+	
+	<div class="buttons">
+		<button id="size">Size</button>
+		<button id="color">Color</button>
+			<ul class="color-options">
+				<li id="random">Random</li>
+				<li id="white">White</li>
+				<li id="greyscale">Greyscale</li>
+			</ul>
+		<button id="create">Create Sketchpad</button>
+	</div>
+	
+	<div class="container"></div>
+	
 	<footer>
 		<p><a href="https://github.com/GabiOC/sketchpad">View repo on Github</a></p>
 	</footer>
