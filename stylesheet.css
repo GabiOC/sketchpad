@@ -8,11 +8,12 @@
 }
 
 .container {
-	max-width: 960px;
-	max-height: 960px;
+	max-width: 1000px;
+	max-height: 700px;
 	margin: auto;
 	font-size: 0;
 	line-height: 0;
+	overflow: hidden;
 }
 
 .grid_sq {
