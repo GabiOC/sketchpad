@@ -2,23 +2,23 @@ $(document).ready(function(){
 	var dimension = 16; // default size of grid
 	var apiCats = 'src="http://thecatapi.com/api/images/get?&format=src&type=gif&size=small"';
 	var whichButton = parseInt($(this).attr("value"));
+	var newGrid;
 
 	// Handles click, checks input validity and triggers new grid
 	$(".button").click(function(){
 		$(".grid_sq").remove();
-		var dimension = parseInt(prompt("Enter a number 1-100 for grid. 'Return' for default."));
-		if(isNaN(dimension) || dimension <1 || dimension >100){
-			dimension = ((whichButton === 4) ? 5 : 16) // smaller grid default for cat button
-		};
-		createGrid(dimension);
+	 	newGrid = parseInt(prompt("Enter a number 1-100 for grid. 'Return' for default."));
+		if(isNaN(newGrid) || newGrid <1 || newGrid >100){
+			newGrid = ((whichButton === 4) ? 5 : 16)}; // smaller grid default for cat button
+		createGrid(newGrid);
 		handle(whichButton);
 	});
 
 	// Creates new grid
-	function createGrid(dimension){
-		// Set grid size
-		var boxNum = dimension * dimension;
-		var boxSize = (960)/dimension;
+	function createGrid(newGrid){
+		// Sets grid size
+		var boxNum = newGrid * newGrid;
+		var boxSize = (960)/newGrid;
 		var i = 0;
 
 		// Make new grid
