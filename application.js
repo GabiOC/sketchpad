@@ -3,30 +3,14 @@ $(document).ready(function(){
 	var newGrid;
 	var buttonId = $("button").attr("id");
 
- 	// Mouseenter functions
-	var effect = function(){
-			$(".container").find(".grid_sq").on("mouseenter", function(){
-			switch(buttonId){
-				case "white": $(this).css({"background-color": "white"}); break;
-				case "random": $(this).css({"background-color": "#"+Math.floor(Math.random()*16777215).toString(16)}); break;
-				case "greyscale": 
-					var currentOpacity = $(this).css("opacity")
-					if(currentOpacity != 0){
-						$(this).css("opacity", currentOpacity - 0.10)
-					}; break;
-				case "cats": $(this).append($(this).append('<img width="' + boxSize + '" height="' + boxSize + '" ' + apiCats + ' >')); break;
-			};
-		});
-	};
-
-	// Handles click, checks input validity, triggers new grid and mouseenter effect
+	// Handles click, checks input validity, and triggers new grid and hover effect
 	$("button").click(function(){
 		$(".grid_sq").remove();
 	 	newGrid = parseInt(prompt("Enter a number 1-100 for grid. 'Return' for default."));
 		if(isNaN(newGrid) || newGrid <1 || newGrid >100){
 			newGrid = 16};
 		createGrid(newGrid);
-		effect(buttonId);
+		hover();
 	});
 
 	// Creates new grid
@@ -43,5 +27,20 @@ $(document).ready(function(){
 			$(".container").append($grid);
 				($grid).css({"width": boxSize + "px", "height": boxSize + "px"});
 		}
+	};
+
+	// Hover effects
+	var hover = function(){
+			$(".container").find(".grid_sq").on("mouseenter", function(){
+			if (buttonId==="white"){
+				$(this).css({"background-color": "blue"});
+			}
+			else if (buttonId==="random"){
+				$(this).css({"background-color": "yellow"});
+			}
+			else {
+				$(this).append($(this).append('<img width="' + boxSize + '" height="' + boxSize + '" ' + apiCats + ' >'));
+			}
+		});
 	};
 });
