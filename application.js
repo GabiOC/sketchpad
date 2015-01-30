@@ -1,7 +1,6 @@
 $(document).ready(function(){
-	var apiCats = 'src="http://thecatapi.com/api/images/get?&format=src&type=gif&size=small"';
+	var apiCats = 'src="http://thecatapi.com/api/images/get?&format=src&type=gif&size=small&"';
 	var newGrid;
-	var buttonId = $("button").attr("id");
 
 	// Handles click, checks input validity, and triggers new grid and hover effect
 	$("button").click(function(){
@@ -10,7 +9,6 @@ $(document).ready(function(){
 		if(isNaN(newGrid) || newGrid <1 || newGrid >100){
 			newGrid = 16};
 		createGrid(newGrid);
-		hover();
 	});
 
 	// Creates new grid
@@ -29,18 +27,24 @@ $(document).ready(function(){
 		}
 	};
 
-	// Hover effects
-	var hover = function(){
-			$(".container").find(".grid_sq").on("mouseenter", function(){
-			if (buttonId==="white"){
-				$(this).css({"background-color": "blue"});
-			}
-			else if (buttonId==="random"){
-				$(this).css({"background-color": "yellow"});
-			}
-			else {
-				$(this).append($(this).append('<img width="' + boxSize + '" height="' + boxSize + '" ' + apiCats + ' >'));
-			}
+	// Sets hover effect for button clicked
+	$("button").click(function(){
+		var buttonId = event.target.id;
+		$(".container").find(".grid_sq").on("mouseenter", function(){
+		if (buttonId=="white"){
+			$(this).css({"background-color": "white"});
+		}
+		else if (buttonId=="random"){
+			$(this).css({"background-color": '#' + Math.random().toString(16).substring(2, 8)});
+		}
+		else{
+			var boxSize = (960)/newGrid;
+			$(this).append($(this).append('<img width="' + boxSize + '" height="' + boxSize + '" ' + apiCats + ' >'));
+			};
 		});
-	};
+	});
+
+	// New cat gif every second
+	setInterval(function(){
+    $(".grid_sq img").attr("src", "http://thecatapi.com/api/images/get?&format=src&type=gif&size=small&" + new Date().getTime());},1000);
 });
