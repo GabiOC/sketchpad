@@ -2,7 +2,7 @@ $(document).ready(function(){
 	var apiCats = 'src="http://thecatapi.com/api/images/get?&format=src&type=gif&size=small&"';
 	var newGrid;
 
-	// Handles click, checks input validity, and triggers new grid and hover effect
+	// Handles click, checks input validity and triggers new grid
 	$("button").click(function(){
 		var buttonId = event.target.id;
 		$(".grid_sq").remove();
@@ -28,7 +28,7 @@ $(document).ready(function(){
 		}
 	};
 
-	// Sets hover effect for button clicked
+	// Sets hover effect for button clicked (2x button click handler isn't great, need to refactor)
 	$("button").click(function(){
 		var buttonId = event.target.id;
 		$(".container").find(".grid_sq").on("mouseenter", function(){
