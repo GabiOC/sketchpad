@@ -4,10 +4,11 @@ $(document).ready(function(){
 
 	// Handles click, checks input validity, and triggers new grid and hover effect
 	$("button").click(function(){
+		var buttonId = event.target.id;
 		$(".grid_sq").remove();
 	 	newGrid = parseInt(prompt("Enter a number 1-100 for grid. 'Return' for default."));
-		if(isNaN(newGrid) || newGrid <1 || newGrid >100){
-			newGrid = 16};
+		if(isNaN(newGrid) || newGrid <1 || newGrid >100){ 
+			newGrid = ((buttonId == "cats") ? 3 : 16)}; // if cat button clicked, smaller grid default
 		createGrid(newGrid);
 	});
 
