@@ -1,51 +1,48 @@
 $(document).ready(function(){
-	var apiCats = 'src="http://thecatapi.com/api/images/get?&format=src&type=gif&size=small&"';
 	var newGrid;
 
-	// Handles click, checks input validity and triggers new grid
 	$("button").click(function(){
-		var buttonId = event.target.id;
-		$(".grid_sq").remove();
+		var buttonId = event.target.id; 
+		$(".grid_sq").remove(); // removes previous grid
+	 	
 	 	newGrid = parseInt(prompt("Enter a number 1-100 for grid. 'Return' for default."));
-		if(isNaN(newGrid) || newGrid <1 || newGrid >100){ 
+		if(isNaN(newGrid) || newGrid <1 || newGrid >100){ // is input within grid parameters?
 			newGrid = ((buttonId == "cats") ? 3 : 16)}; // if cat button clicked, smaller grid default
-		createGrid(newGrid);
-	});
+		
+		createGrid(newGrid); // triggers new grid
 
-	// Creates new grid
-	function createGrid(newGrid){
-		// Sets grid size
-		var boxNum = newGrid * newGrid;
-		var boxSize = (960)/newGrid;
-		var i = 0;
-
-		// Makes new grid
-		while(i<boxNum){
-			i++;
-			var $grid = $('<div class="grid_sq"></div>');
-			$(".container").append($grid);
-				($grid).css({"width": boxSize + "px", "height": boxSize + "px"});
-		}
-	};
-
-	// Sets hover effect for button clicked (2x button click handler isn't great, need to refactor)
-	$("button").click(function(){
-		var buttonId = event.target.id;
+		// sets hover effect
 		$(".container").find(".grid_sq").on("mouseenter", function(){
-		if (buttonId=="white"){
-			$(this).css({"background-color": "white"});
-		}
-		else if (buttonId=="random"){
-			$(this).css({"background-color": '#' + Math.random().toString(16).substring(2, 8)});
-		}
-		else{
-			var boxSize = (960)/newGrid;
-			$(this).append($(this).append('<img width="' + boxSize + '" height="' + boxSize + '" ' + apiCats + ' >'));
+			if (buttonId=="white"){
+				$(this).css({"background-color": "white"});
+			}
+			else if (buttonId=="random"){
+				$(this).css({"background-color": '#' + Math.random().toString(16).substring(2, 8)});
+			}
+			else{
+				var boxSize = (960)/newGrid;
+				$(this).append($(this).append('<img width="' + boxSize + '" height="' + boxSize + '" ' + 'src="http://thecatapi.com/api/images/get?&format=src&type=gif&size=small&"' + ' >'));
 			};
 		});
 	});
 
-	// New cat gif every 2 seconds
+	function createGrid(newGrid){
+		// sets size and number of grid divs based on user input
+		var boxNum = newGrid * newGrid;
+		var boxSize = (960)/newGrid;
+		var i = 0;
+
+		// creates grid divs
+		while(i<boxNum){
+			i++;
+			var $grid = $('<div class="grid_sq"></div>');
+			$(".container").append($grid);
+			($grid).css({"width": boxSize + "px", "height": boxSize + "px"});
+		}
+	};
+
+	// new cat gif every 2 seconds
 	setInterval(function(){
-    $(".grid_sq img").attr("src", "http://thecatapi.com/api/images/get?&format=src&type=gif&size=small&" + new Date().getTime());},2000);
+    	$(".grid_sq img").attr("src", "http://thecatapi.com/api/images/get?&format=src&type=gif&size=small&" + new Date().getTime());
+    },2000);
 });
