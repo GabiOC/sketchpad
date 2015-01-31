@@ -45,7 +45,7 @@ $(document).ready(function(){
 		});
 	});
 
-	// New cat gif every second
+	// New cat gif every 2 seconds
 	setInterval(function(){
-    $(".grid_sq img").attr("src", "http://thecatapi.com/api/images/get?&format=src&type=gif&size=small&" + new Date().getTime());},1000);
+    $(".grid_sq img").attr("src", "http://thecatapi.com/api/images/get?&format=src&type=gif&size=small&" + new Date().getTime());},2000);
 });
