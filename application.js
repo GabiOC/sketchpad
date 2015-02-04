@@ -2,11 +2,11 @@ $(document).ready(function(){
 	var newGrid;
 
 	$("button").click(function(){
-		var buttonId = event.target.id; 
+		var buttonId = event.target.id;
 		$(".grid_sq").remove(); // removes previous grid
 	 	
 	 	newGrid = parseInt(prompt("Enter a number 1-100 for grid. 'Return' for default."));
-		if(isNaN(newGrid) || newGrid <1 || newGrid >100){ // is input within grid parameters?
+		if(isNaN(newGrid) || newGrid <1 || newGrid >100){ // sets default grid size if input not within parameters
 			newGrid = ((buttonId == "cats") ? 3 : 16)}; // if cat button clicked, smaller grid default
 		
 		createGrid(newGrid); // triggers new grid
@@ -20,7 +20,7 @@ $(document).ready(function(){
 				$(this).css({"background-color": '#' + Math.random().toString(16).substring(2, 8)});
 			}
 			else{
-				var boxSize = (960)/newGrid;
+				var boxSize = Math.floor(960)/newGrid;
 				$(this).append($(this).append('<img width="' + boxSize + '" height="' + boxSize + '" ' + 'src="http://thecatapi.com/api/images/get?&format=src&type=gif&size=small&"' + ' >'));
 			};
 		});
@@ -29,11 +29,11 @@ $(document).ready(function(){
 	function createGrid(newGrid){
 		// sets size and number of grid divs based on user input
 		var boxNum = newGrid * newGrid;
-		var boxSize = (960)/newGrid;
+		var boxSize = Math.floor(960)/newGrid;
 		var i = 0;
 
 		// creates grid divs
-		while(i<boxNum){
+		while(i<=boxNum){
 			i++;
 			var $grid = $('<div class="grid_sq"></div>');
 			$(".container").append($grid);
