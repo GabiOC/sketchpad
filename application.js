@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	var newGrid;
 
-	$("button").click(function(){
+	$("button").click(function(event){
 		var buttonId = event.target.id;
 		$(".grid_sq").remove(); // removes previous grid
 	 	
